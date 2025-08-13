@@ -40,7 +40,23 @@
     document.getElementById("widget").textContent = `${dayName}, ${monthName} ${date}`;
   }
 
-  displayDayMonthDate();
+  function scheduleNextUpdate() {
+    displayDayMonthDate();
+
+    const now = new Date();
+    // Calculate milliseconds until next midnight
+    const nextMidnight = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate() + 1, // next day
+      0, 0, 0, 0         // at 00:00:00
+    );
+    const msUntilMidnight = nextMidnight - now;
+
+    setTimeout(scheduleNextUpdate, msUntilMidnight);
+  }
+
+  scheduleNextUpdate();
 </script>
 
 </body>
