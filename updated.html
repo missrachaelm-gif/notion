@@ -8,9 +8,15 @@
     body {
       font-variant-caps: all-petite-caps;
       background-color: transparent; /* blends into Notion */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
     .widget {
-      padding: 5px 5px;
+      padding: 10px 15px;
       color: #FFFFFF;
       display: flex;
       justify-content: center;
@@ -23,48 +29,30 @@
       /* border-radius: 5px;         <-- optional */
       /* box-shadow: 2px 2px 1px 0px #000000;  <-- optional */
     }
-    .greet { font-size: 3em; }
-    .date, .clock {
-      font-family: monospace;
-      font-size: 2em;
-    }
-    .time {
-      display: inline-block;
-      min-width: 20px;
-    }
-    .colon {
-      font-size: 1em;
-      display: inline-block;
+    .greet {
+      font-size: 3em;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="widget">
-    <div class="greet" id="greet"></div>
-    <div class="clock">
-      <div class="time" id="hour"></div>
-      <div class="colon">:</div>
-      <div class="time" id="min"></div>
-      <div class="colon">:</div>
-      <div class="time" id="sec"></div>
-    </div>
-  </div>
+<div class="widget">
+  <div class="greet" id="greet"></div>
 </div>
 
 <script>
-  // New function to display Day, Month, Date
-  function displayDayMonthDate(today) {
+  function displayDayMonthDate() {
+    const today = new Date();
     const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     const dayName = days[today.getDay()];
     const monthName = months[today.getMonth()];
     const date = today.getDate();
-    document.getElementById("greet").innerHTML = `${dayName}, ${monthName} ${date}`;
+    document.getElementById("greet").textContent = `${dayName}, ${monthName} ${date}`;
   }
 
-  displayWidget();
+  displayDayMonthDate();
 </script>
 
 </body>
