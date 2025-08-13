@@ -1,0 +1,25 @@
+<div id="widget" style="
+    font-family: sans-serif;
+    color: white;
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    text-align: center;
+">
+  <h2 id="dateText"></h2>
+</div>
+
+<script>
+  function updateDate() {
+    const dateElement = document.getElementById("dateText");
+
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+    const today = new Date();
+    const dateString = today.toLocaleDateString('en-US', options);
+
+    dateElement.textContent = dateString;
+  }
+
+  updateDate();
+</script>
