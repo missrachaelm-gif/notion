@@ -65,17 +65,6 @@
     document.getElementById("greet").innerHTML = `${dayName}, ${monthName} ${date}`;
   }
 
-  // Existing date function (for full date with year)
-  function displayDate(today) {
-    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-    const dayName = days[today.getDay()];
-    const monthName = months[today.getMonth()];
-    const date = today.getDate();
-    const year = today.getFullYear();
-    document.getElementById("date").innerHTML = `${dayName}, ${monthName} ${date} ${year}`;
-  }
-
   function displayWidget() {
     const today = new Date();
     displayDayMonthDate(today);  // updated line
