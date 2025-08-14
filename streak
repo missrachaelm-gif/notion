@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Duolingo Streak Widget</title>
+  <style>
+    body { margin:0; padding:0; background: transparent; color: #000; font-size: 2em; text-align:center; }
+  </style>
+</head>
+<body>
+  <div id="streak">Loading streak...</div>
+  <script>
+    async function fetchStreak() {
+      try {
+        const res = await fetch("https://www.duolingo.com/2017-06-30/users?username=RachaelSantiago&fields=streak,streakData%7BcurrentStreak%7D%7D");
+        const { users } = await res.json();
+        const user = users[0] || {};
+        const streak = user.streak || (user.streakData?.currentStreak?.length ?? 0);
+        document.getElementById("streak").textContent = `Streak: ${streak} days`;
+      } catch (err) {
+        document.getElementById("streak").textContent = "Error loading streak";
+      }
+    }
+    fetchStreak();
+  </script>
+</body>
+</html>
